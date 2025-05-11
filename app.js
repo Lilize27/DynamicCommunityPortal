@@ -2,21 +2,28 @@
 
 const express = require('express');
 const path = require('path');
-
+const bodyParser=require('body-parser')
 const app = express();
 
-// SET VIEW ENGINE
+const pageRoutes = require('./routes/pageRoutes');
+const logRoutes = require('./routes/logRoutes');
+const eventsRoutes = require('./routes/eventsRoutes');
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// STATIC FILES (if needed)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ROUTES
-const pageRoutes = require('./routes/pageRoutes'); // adjust if your routes are elsewhere
 app.use('/', pageRoutes);
+app.use('/', logRoutes);
+app.use('/api/events',eventsRoutes);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
 });
