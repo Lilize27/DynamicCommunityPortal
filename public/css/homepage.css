@@ -41,7 +41,6 @@ span {
 }
 
 .welcome-img {
-  background-color: red;
   display: block;
 }
 
@@ -136,7 +135,6 @@ span {
 .gallery .img3 {
   grid-row: 2 / span 1;
   grid-column: 1 / span 2;
-  background-color: yellow;
 }
 
 .gallery div img {
