@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.welcome-section{
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 16px;
+    background-color: white;
+}
+
+.message{
+   padding: 20px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.message button{
+    margin-top: 19px;
+    padding: 7px 14px;
+    border: none;
+    background-color: #006241;
+    border-radius: 5px;
+    color: white;
+}
+.message h1{
+    line-height: 1.4;
+    font-size: 36px;
+}
+
+.message span{
+    color: #006241;
+}
+
+.welcome-img{
+    background-color: red;
+    display: block;
+}
+
+.welcome-img img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.community-work{
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    padding: 20px;
+    margin-top: 30px;
+}
+.community-work h2{
+    margin-bottom: 20px;
+}
+
+.community-work .projects{
+    text-align: center;
+}
+
+.events{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.events .card{
+    padding: 12px;
+    width: 80%;
+    height: 70%;
+    background-color: #d4e9e2;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* x-offset, y-offset, blur, color */
+    border-radius: 10px; /* Optional: smooth corners */
+}
+
+.event-details{
+    background-color: green;
+    height: auto;
+    color: white;
+}
+
+.education-resources{
+    margin-top: 45px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.education-resources h3{
+    width: 700px;
+    margin-bottom: 35px;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding-left: 35px;
+    gap: 12px;
+    height: 500px;
+}
+
+.gallery .img1 {
+    background-color: pink;
+    grid-column: 1/span 1;
+}
+
+.gallery .img2 {
+    background-color: red;
+    grid-column: 2/span 1;
+}
+
+.gallery .img3 {
+    grid-row: 2/span 1;
+    grid-column: 1/span 2;
+    background-color: yellow;
+}
