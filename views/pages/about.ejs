@@ -1,1 +1,285 @@
-<h1>About Us</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Garden Discussion</title>
+  <style>
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fdf7;
+      color: #1f3a1c;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+  
+    .about-content {
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .about-content h1 {
+      font-size: 2.5rem;
+      color: #3f6832;
+      margin-bottom: 1rem;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    .about-us {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      background-color: #eaf4e2;
+      border-radius: 8px;
+    }
+
+    .about-us .service {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-us .service h3 {
+      font-size: 1.6rem;
+      color: #3f6832;
+      margin-bottom: 1rem;
+    }
+
+    .about-us .service p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    
+    .info-bubble {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .info-bubble:hover {
+      transform: scale(1.05);
+    }
+
+    .info-bubble h3 {
+      color: #3f6832;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-bubble p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    
+    .discussion-board {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #f0f8f4;
+      border-radius: 8px;
+    }
+
+    .discussion-board h2 {
+      font-size: 1.8rem;
+      color: #3f6832;
+      margin-bottom: 1rem;
+    }
+
+    .discussion-board form {
+      margin-bottom: 1.5rem;
+    }
+
+    .discussion-board form input,
+    .discussion-board form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .discussion-board form button {
+      padding: 0.8rem 1.2rem;
+      background-color: #3f6832;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .discussion-board form button:hover {
+      background-color: #2a4b21;
+    }
+
+    .message-entry {
+      background-color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .message-entry button {
+      background-color: #d9534f;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      margin-top: 0.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .message-entry button:hover {
+      background-color: #b02a25;
+    }
+
+   
+  </style>
+</head>
+<body>
+  
+
+  <main class="container about-content">
+    <h1>Welcome to Our Community Garden</h1>
+    <p>Join our online community garden and share your ideas, tips, and gardening experiences.</p>
+
+    
+    <section class="about-us">
+      <div class="service">
+        <h3>Community Workshops</h3>
+        <p>Join our regular workshops where we teach sustainable gardening techniques, urban farming, and organic practices.</p>
+      </div>
+      <div class="service">
+        <h3>Gardening Supplies</h3>
+        <p>We provide all the gardening tools, seeds, and compost you'll need to start your garden. We also offer tool rental services!</p>
+      </div>
+      <div class="service">
+        <h3>Seasonal Events</h3>
+        <p>We host seasonal gardening events such as plant swaps, harvest festivals, and garden tours to bring our community together.</p>
+      </div>
+      <div class="service">
+        <h3>Volunteering Opportunities</h3>
+        <p>Help us grow the garden by volunteering your time for planting, maintenance, and community outreach programs.</p>
+      </div>
+
+      
+      <div class="info-bubble">
+        <h3>Healthy Food Production</h3>
+        <p>Our garden promotes fresh, local food by growing fruits, vegetables, and herbs. Get access to healthy produce year-round!</p>
+      </div>
+
+      <div class="info-bubble">
+        <h3>Environmental Sustainability</h3>
+        <p>We aim to reduce waste, conserve water, and enhance biodiversity. Our garden is designed with eco-friendly practices in mind.</p>
+      </div>
+    </section>
+
+    
+    <section class="discussion-board">
+      <h2>Community Discussion</h2>
+      
+      <form id="discussion-form">
+        <input type="text" id="name" placeholder="Your name" required />
+        <textarea id="message" placeholder="Enter your message..." rows="4" required></textarea>
+        <button type="submit">Post Message</button>
+      </form>
+      
+      <div id="messages-list"></div>
+    </section>
+
+  </main>
+
+  
+
+  <script>
+    const form = document.getElementById("discussion-form");
+    const messagesList = document.getElementById("messages-list");
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const storedMessages = JSON.parse(localStorage.getItem("communityMessages")) || [];
+      storedMessages.forEach(msg => addMessageToDOM(msg.id, msg.name, msg.text));
+    });
+
+    
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (name && message) {
+        const newMessage = {
+          id: Date.now().toString(), 
+          name,
+          text: message
+        };
+
+        
+        addMessageToDOM(newMessage.id, newMessage.name, newMessage.text);
+
+      
+        const storedMessages = JSON.parse(localStorage.getItem("communityMessages")) || [];
+        storedMessages.unshift(newMessage);
+        localStorage.setItem("communityMessages", JSON.stringify(storedMessages));
+
+        form.reset();
+      }
+    });
+
+    
+    function addMessageToDOM(id, name, text) {
+      const entry = document.createElement("div");
+      entry.className = "message-entry";
+      entry.setAttribute("data-id", id);
+      entry.innerHTML = `
+        <strong>${name}</strong>
+        <p>${text}</p>
+        <button class="delete-btn">Delete</button>
+      `;
+      messagesList.prepend(entry);
+
+      
+      entry.querySelector(".delete-btn").addEventListener("click", () => {
+        deleteMessage(id);
+      });
+    }
+
+    
+    function deleteMessage(id) {
+      const storedMessages = JSON.parse(localStorage.getItem("communityMessages")) || [];
+      const updatedMessages = storedMessages.filter(msg => msg.id !== id);
+      localStorage.setItem("communityMessages", JSON.stringify(updatedMessages));
+
+      const messageElement = document.querySelector(`.message-entry[data-id="${id}"]`);
+      if (messageElement) {
+        messageElement.remove();
+      }
+    }
+  </script>
+</body>
+</html>
+
