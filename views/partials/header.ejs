@@ -1,54 +1,93 @@
-<div class="space-barHeader">
-</div>
-
 <div class="main-header">
-<nav class="navbar">
+  <nav class="navbar">
     <div class="icon-div">
-        <img src="../images/Icon.png" alt="Garden Logo" class="logo">
-        <div class="icon-text">
-            <h1>GrowTogether</h1>
-            <h3>We thrive together</h3>
-        </div>
+      <img src="../images/Icon.png" alt="Garden Logo" class="logo" />
+      <div class="icon-text">
+        <h1>GrowTogether</h1>
+        <h3>We thrive together</h3>
+      </div>
     </div>
-   
+
     <ul class="nav-links">
       <li>
-        <img src="../images/nav-bar-pot.png" class="nav-icon" alt="Home Icon">
-        <a href="/">Home</a></li>
+        <img src="../images/nav-bar-pot.png" class="nav-icon" alt="Home Icon" />
+        <a href="/">Home</a>
+      </li>
       <li>
-        <img src="../images/nav-bar-flower.png" class="nav-icon" alt="Home Icon">
-        <a href="/about">About</a></li>
+        <img
+          src="../images/nav-bar-flower.png"
+          class="nav-icon"
+          alt="Home Icon"
+        />
+        <a href="/about">About</a>
+      </li>
       <li>
-        <img src="../images/nav-bar-grass.png" class="nav-icon" alt="Home Icon">
-        <a href="/events">Events</a></li>
+        <img
+          src="../images/nav-bar-grass.png"
+          class="nav-icon"
+          alt="Home Icon"
+        />
+        <a href="/events">Events</a>
+      </li>
       <li>
-        <img src="../images/nav-bar-leaves.png" class="nav-icon" alt="Home Icon">
-        <a href="/contact">Contact Us</a></li>
+        <img
+          src="../images/nav-bar-leaves.png"
+          class="nav-icon"
+          alt="Home Icon"
+        />
+        <a href="/contact">Contact Us</a>
+      </li>
       <li>
         <!-- <img src="../images/nav-bar-plant.png" class="nav-icon" alt="Home Icon">
         <a href="/thankyou">Thank You</a></li> -->
-        <li class="login-li">
-            <a href="#" id="loginToggleBtn" style="background-color: #1d3215;">Sign In / Log In</a>
-        </li>
+      </li>
+
+      <li class="login-li">
+        <a href="#" id="loginToggleBtn" style="background-color: #1d3215"
+          >Sign In / Log In</a
+        >
+      </li>
     </ul>
   </nav>
 
-  <div class="gardenHeader">
-    <img src="../images/GardeningHeaderSnip.jpg" alt="Garden picture" class="gardenPicture">
-  </div>
-
   <div id="loginPopup" class="popup-overlay">
     <div class="popup-content">
-      
-            <h2>Login or Create Account</h2>
-            <input type="text" id="username" placeholder="Username" style="font-size: large;"><br>
-            <input type="password" id="password" placeholder="Password" style="font-size: large;"><br>
-            <button class="popUpButton" onclick="loginUser()" style="font-size: large;">Login</button>
-            <button class="popUpButton" onclick="signupUser()" style="font-size: large;">Sign Up</button>
-            <button class="popUpButton" onclick="toggleLoginPopup()" style="font-size: large;">Close</button>
-            <p id="loginMessage"></p>
-       
+      <h2>Login or Create Account</h2>
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+        style="font-size: large"
+      /><br />
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        style="font-size: large"
+      /><br />
+      <button
+        class="popUpButton"
+        onclick="loginUser()"
+        style="font-size: large"
+      >
+        Login
+      </button>
+      <button
+        class="popUpButton"
+        onclick="signupUser()"
+        style="font-size: large"
+      >
+        Sign Up
+      </button>
+      <button
+        class="popUpButton"
+        onclick="toggleLoginPopup()"
+        style="font-size: large"
+      >
+        Close
+      </button>
+      <p id="loginMessage"></p>
     </div>
   </div>
 </div>
-  <!-- <script src="/appFrontEnd.js"></script> -->
+<!-- <script src="/appFrontEnd.js"></script> -->
