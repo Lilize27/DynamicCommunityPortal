@@ -1,18 +1,33 @@
 // app.js
 
-const express = require("express");
-const path = require("path");
-const pageRoutes = require("./routes/pageRoutes");
-
+const express = require('express');
+const path = require('path');
+const bodyParser=require('body-parser')
 const app = express();
-const port = 3000;
 
-app.use(express.static(path.join(__dirname, "public")));
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+const pageRoutes = require('./routes/pageRoutes');
+const logRoutes = require('./routes/logRoutes');
+const eventsRoutes = require('./routes/eventsRoutes');
+const forumRoutes = require('./routes/forumRoutes');
+const contactRoutes = require('./routes/contactRoutes'); 
 
-app.use("/", pageRoutes);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/forum', forumRoutes);
+app.use('/', pageRoutes);
+app.use('/', logRoutes);
+app.use('/api/events',eventsRoutes);
+app.use('/api/messages', contactRoutes);
+
+app.listen(3000, () => {
+  console.log('Server running on http://localhost:3000');
 });
