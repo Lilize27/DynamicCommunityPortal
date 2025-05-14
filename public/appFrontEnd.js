@@ -322,6 +322,9 @@ function isUserSignedIn() {
   }
   
   function loadEvents() {
+    const user = requireLogin();  
+      if (!user) return;
+      
     fetch('/api/events')
       .then(res => res.json())
       .then(events => {
@@ -477,9 +480,9 @@ function isUserSignedIn() {
       loadEvents();
     }
   
-    if (document.getElementById("add-event-form")) {
-      toggleEventForm();
-    }
+    // if (document.getElementById("add-event-form")) {
+    //   toggleEventForm();
+    // }
   
     
     
