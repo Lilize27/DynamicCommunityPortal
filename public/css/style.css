@@ -194,9 +194,13 @@ h1 {
 footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #487531;
   color: white;
   padding: 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), #000),
+    url("../images/GardeningHeaderSnip.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .contact div {
   margin-top: 20px;
@@ -226,6 +230,7 @@ footer p {
 .sub-form {
   margin-top: 20px;
 }
+in
 /* --------------EVENTS CONTAINER--------------- */
 .events-container {
   display: flex;
@@ -516,4 +521,10 @@ footer p {
 }
 .login-li {
   margin-right: 20px;
+}
+
+.footer-logo {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
