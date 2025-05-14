@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Community Gardening",
+    "description": "Bring your shovel and come spend the day gardening with the community.",
+    "time": "2025/05/17 08h00",
+    "image": "/images/Community-Gardening.jpg",
+    "addedBy": "Lilize"
+  },
+  {
+    "title": "Harvet Festival",
+    "description": "The Harvest festival is around the corner! Bring your best veggies and enjoy music, food and drinks!",
+    "time": "2025/06/01 09h00",
+    "image": "/images/Harvest-Festival.jpeg",
+    "addedBy": "Admin"
+  },
+  {
+    "title": "Gardening Tool Exchange",
+    "description": "Bring your gardening tools that is no longer in use and exchange them for tools you really need.",
+    "time": "2025/05/18",
+    "image": "/images/Gardening-Tools.jpg",
+    "addedBy": "Peter"
+  },
+  {
+    "title": "Community Picnic",
+    "description": "Bring your blanket and join us for a picnic to say goodbye to autumn and hallo to winter.",
+    "time": "2025/06/07",
+    "image": "/images/Community-Picnic.jpg",
+    "addedBy": "Peter"
+  },
+  {
+    "title": "Flower Sale",
+    "description": "Bring your brightest flowers and sell them or buy seeds for the future.",
+    "time": "2025/07/01 From 09h00 to 15h00",
+    "image": "/images/Flower-Sale.jpg",
+    "addedBy": "Lilize"
+  }
+  
+]
