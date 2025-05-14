@@ -7,7 +7,41 @@ const path = require('path');
 
 const forumFilePath = path.join(__dirname, '../forum.json');
 
-router.get('/', (req, res) => {
+function parseDate(dateStr) {
+  return new Date(dateStr);
+}
+
+router.get("/", (req, res) => {
+  let forumMessages = [];
+  let latestThreeEvents = [];
+
+  
+  try {
+    const eventsData = fs.readFileSync(eventsFilePath, "utf-8");
+    const events = eventsData.trim() ? JSON.parse(eventsData) : [];
+
+    const sortedEvents = events.sort((a, b) => parseDate(b.time) - parseDate(a.time));
+    latestThreeEvents = sortedEvents.slice(0, 3);
+  } catch (err) {
+    console.error("Error loading events:", err);
+  }
+
+  
+  try {
+    const data = fs.readFileSync(forumFilePath, "utf-8");
+    forumMessages = data.trim() ? JSON.parse(data) : [];
+  } catch (err) {
+    console.error("Error reading forum.json:", err);
+  }
+
+  
+  res.render("pages/home", {
+    events: latestThreeEvents,
+    forumMessages,
+  });
+});
+
+router.get('/about', (req, res) => {
   let forumMessages = [];
 
   try {
@@ -17,10 +51,10 @@ router.get('/', (req, res) => {
     console.error('Error reading forum.json:', err);
   }
 
-  res.render('pages/home', { forumMessages }); 
+  res.render('pages/about', { forumMessages }); 
 });
 
-router.get('/about', (req, res) => res.render('pages/about'));
+// router.get('/about', (req, res) => res.render('pages/about'));
 
 const fs = require('fs');
 
@@ -43,6 +77,9 @@ router.get('/events', (req, res) => {
     res.render('pages/events', { events });
   });
 });
+
+
+
 
 router.get('/contact', (req, res) => res.render('pages/contact'));
 router.get('/thankyou', (req, res) => res.render('pages/thankyou'));

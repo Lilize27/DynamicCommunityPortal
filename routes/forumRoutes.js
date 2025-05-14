@@ -6,7 +6,7 @@ const router = express.Router();
 
 const forumFilePath = path.join(__dirname, '../forum.json');
 
-// Ensure file exists and has valid JSON
+
 if (!fs.existsSync(forumFilePath)) {
   fs.writeFileSync(forumFilePath, JSON.stringify([]));
 }
