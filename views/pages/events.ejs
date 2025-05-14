@@ -11,27 +11,25 @@
 <body>
     <%- include('../partials/header') %>
 <header>
-    <h1 >Our Events!</h1>
+    <h1 class="events-header-top">Our Events!</h1>
 </header>
     <main>
-        <div class="events-container" onclick="toggleEvent()">
-           
+        <div class="events-container">
+            <% events.forEach(event => { %>
+                <div class="event-card" onclick="toggleEvent(this)">
+                  <div class="event-image" style="background-image: url('<%= event.image %>');"></div>
+                  <div class="event-content">
+                    <h3 class="event-title" style=" font-size: 2rem;" ><%= event.title %></h3>
+                    <p class="event-creator">By <%= event.addedBy %></p>
+                    <p class="event-time"><%= event.time || 'No time set' %></p>
+                    <p class="event-description"><%= event.description %></p>
+                  </div>
+                </div>
+              <% }) %>    
         </div>
-           
-     
-
-        <section id="add-event-form" style="display: block;">
-          <h3>Add a New Event</h3>
-          <input type="text" id="event-title" placeholder="Event Title" required>
-          <input type="text" id="event-description" placeholder="Description" required>
-          <input type="text" id="event-time" placeholder="Event Date and Time" required>
-          <input type="text" id="event-image" placeholder="Image URL" required>
-          <button onclick="addNewEvent()">Add Event</button>
-        </section>
-       
-
+        
         <header>
-            <h1>Weather</h1>
+            <h1 class="events-header-weather">Weather</h1>
         </header>   <!-- Weather Widget --> 
 <section class="weather-info">
     <div class="weather-content-wrapper">
@@ -87,7 +85,7 @@
             <div class="right-content">
                 <div class="forecast-item-container">
                     <div class="forecast-item">
-                        <img class="forecast-item-img" src="/images/weather/sunny.svg" alt="Sunny">
+                        <img class="forecast-item-img" src="/images/weather/atmosphere.svg" alt="Sunny">
                         <div class="day">Mon</div>
                         <div class="temp">25°C</div>
                     </div>

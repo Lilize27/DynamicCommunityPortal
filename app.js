@@ -8,7 +8,7 @@ const app = express();
 const pageRoutes = require('./routes/pageRoutes');
 const logRoutes = require('./routes/logRoutes');
 const eventsRoutes = require('./routes/eventsRoutes');
-
+const forumRoutes = require('./routes/forumRoutes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,6 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/api/forum', forumRoutes);
 app.use('/', pageRoutes);
 app.use('/', logRoutes);
 app.use('/api/events',eventsRoutes);

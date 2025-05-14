@@ -4,8 +4,8 @@ body {
     background-color: #f0fff0;
     /* display: flex; */
     /* align-items:center;
-    justify-content: center;
-    overflow-x: hidden; */
+    justify-content: center;*/
+    overflow-x: hidden;
 }
 
 /*  */
@@ -14,13 +14,13 @@ h1{
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-/* Thin header bar above navbar */
+
 .space-barHeader {
     height: 15px;
     background-color: #8FB135;
 }
 
-/* Main navigation bar */
+
 .navbar {
     background-color: #487531;
     display: flex;
@@ -29,7 +29,7 @@ h1{
     justify-content: space-between;
 }
 
-/* Make logo circular */
+
 .logo {
     /* height: 50px;
     width: 50px; */
@@ -38,7 +38,7 @@ h1{
     margin-right: 10px;
 }
 
-/* Navigation links */
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -72,7 +72,7 @@ h1{
     transition: transform 0.3s ease;
 }
 
-/* Shake animation */
+
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-2px); }
@@ -81,7 +81,7 @@ h1{
     100% { transform: translateX(0); }
 }
 
-/* Trigger shake on li:hover */
+
 .nav-links li:hover .nav-icon {
     animation: shake 0.5s ease;
 }
@@ -100,7 +100,7 @@ h1{
     background-color: #cde3c2;
 }
 
-/* Popup overlay */
+
 .popup-overlay {
     display: none;
     position: fixed;
@@ -114,7 +114,7 @@ h1{
     z-index: 1000;
 }
 
-/* Popup box */
+
 .popup-content {
     background-color: #8FB135;
    
@@ -137,12 +137,12 @@ h1{
 
 .icon-div {
     display: flex;
-    align-items: center; /* Aligns items vertically centered */
+    align-items: center; 
     gap: 10px;
     color: white;
 }
 
-/* Logo inside .icon-div */
+
 .logo {
     /* height: 50px;
     width: 50px; */
@@ -150,7 +150,7 @@ h1{
     object-fit: cover;
 }
 
-/* Wraps text next to the logo */
+
 .icon-text {
     display: flex;
     flex-direction: column;
@@ -173,12 +173,12 @@ h1{
 
 .gardenHeader {
     width: 100%;
-    overflow: hidden; /* Optional: hides overflow if image is larger */
+    overflow: hidden; 
 }
 
 .gardenPicture {
     width: 100%;
-    height: 200px; /* Or any height you prefer */
+    height: 200px; 
     object-fit: cover;
     display: block;
 }
@@ -193,6 +193,29 @@ footer {
 }
 
 /* --------------EVENTS CONTAINER--------------- */
+.events-header-top{
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    /* position: absolute;      */
+    top: 20rem;                 
+    left: 50rem;
+    width: 100%;
+    background-color: #8FB135; 
+    z-index: 1000;     
+}
+
+.events-header-weather{
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    /* position: absolute;      */
+    top: 20rem;                 
+    left: 50rem;
+    width: 100%;
+    background-color: #90e0ef; 
+    z-index: 1000;     
+}
 .events-container {
     display: flex;
     gap: 20px;
@@ -268,21 +291,7 @@ footer {
     display: block;
   }
 
-  #add-event-form {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 500px;
-    background-color: #8FB135;
-    border: 2px solid #487531;
-    border-radius: 10px;
-    display: none; /* remains hidden until JS shows it */
-  }
-  
-  #add-event-form h3 {
-    margin-bottom: 15px;
-    font-size: 1.4em;
-  }
-  
+ 
   #add-event-form input[type="text"] {
     display: block;
     width: 100%;
@@ -305,6 +314,78 @@ footer {
     background-color: #487531;
   }
 
+  .add-event-wrapper {
+    position: relative;
+    width: 25rem;
+    min-height: 36rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    overflow: hidden;
+    background: transparent; 
+    z-index: 0;
+  }
+  
+  
+  .add-event-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/flower-daisy.jpg'); 
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    z-index: -1;
+  }
+  
+  
+  .add-event-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(126, 120, 120, 0.4); 
+    z-index: -1;
+  }
+  
+  
+  .add-event-wrapper > * {
+    position: relative;
+    z-index: 1;
+  }
+  
+  
+  #add-event-form {
+    margin: 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 2px solid #487531;
+    border-radius: 10px;
+    width: 80%;
+  }
+  
+  
+  .toggle-form-btn {
+    margin: 10px;
+    padding: 20px;
+    font-size: 1em;
+    background-color: #487531;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 80%;
+  }
+  
+  .toggle-form-btn:hover {
+    background-color: #365625;
+  }
 /* ----------WEATHER-------------- */
   .weather-row{
     display: flex;
@@ -482,3 +563,62 @@ footer {
         padding: 6vw 4vw;
     }
 }
+
+/* --------------HOME PAGE Events------------- */
+.home-events {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: #8FB135;
+    border-radius: 12px;
+  }
+  
+  .simple-event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .simple-event-list li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .simple-event-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .simple-event-list .event-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+  }
+  
+  .simple-event-list .event-time {
+    color: #666;
+    font-size: 0.9em;
+  }
+  
+  .view-all-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #4a752c;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .view-all-link:hover {
+    text-decoration: underline;
+  }
+  /* .event-title {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+  } */
+  
+  .event-time,
+  .event-description {
+    color: #444;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+  }

@@ -99,6 +99,91 @@ function showLogoutOption() {
     }
   }
 
+  function requireLogin() {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      alert("Please log in or sign up.");
+      return null;
+    }
+    return user;
+  }
+
+  function getLoggedInUser() {
+    return localStorage.getItem('user');
+  }
+
+//   async function loadForumMessages() {
+//     const res = await fetch('/api/forum');
+//     const data = await res.json();
+  
+//     const forum = document.getElementById('forum-list');
+//     forum.innerHTML = '';
+//     data.forEach(msg => {
+//         const div = document.createElement('div');
+//         div.className = 'forum-msg';
+//         div.innerHTML = `<strong>${msg.username}</strong> <em>(${msg.time})</em>: ${msg.message}`;
+//         forum.appendChild(div);
+//       });
+//   }
+  
+  
+// //   async function submitForumMessage() {
+// //     const username = localStorage.getItem('user');
+// //     const message = document.getElementById('forum-input').value.trim();
+  
+// //     if (!username) {
+// //       alert('Please log in or sign up to post a message.');
+// //       return;
+// //     }
+  
+// //     if (!message) return;
+  
+// //     const res = await fetch('/api/forum', {
+// //       method: 'POST',
+// //       headers: { 'Content-Type': 'application/json' },
+// //       body: JSON.stringify({ username, message })
+// //     });
+  
+// //     document.getElementById('forum-input').value = '';
+// //     loadForumMessages();
+// //   }
+  
+  
+//   document.getElementById('forum-form').addEventListener('submit', async (e) => {
+//     e.preventDefault(); 
+
+//     const forumMessage = document.getElementById('forum-message').value.trim();
+//     const username = localStorage.getItem('user'); 
+
+//     if (!forumMessage) {
+//         alert("Message cannot be empty!");
+//         return;
+//     }
+
+//     if (!username) {
+//         alert("Please log in or sign up to post a message.");
+//         return;
+//     }
+
+   
+//     const res = await fetch('/api/forum', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ username, message: forumMessage })
+//     });
+
+//     const data = await res.json();
+
+//     if (data.success) {
+//         alert("Message posted successfully!");
+//         document.getElementById('forum-message').value = '';
+//         loadForumMessages();
+//     } else {
+//         alert("Error posting message: " + data.error);
+//     }
+// });
   
   function toggleEvent(card) {
     if (!card) return; // <- avoids crashing
@@ -131,6 +216,8 @@ function showLogoutOption() {
     desc.style.display = 'block';
     time.style.display = 'block';
   }
+  
+
 
 //   ---------------WEATHER------------------
 
@@ -251,13 +338,44 @@ function isUserSignedIn() {
             <div class="event-content">
               <h3 class="event-title">${event.title}</h3>
               <p class="event-creator">By ${event.addedBy}</p>
-               <p class="event-time">${event.time}</p>
+              <p class="event-time">${event.time || 'No time set'}</p>
               <p class="event-description">${event.description}</p>
             </div>
           `;
-          
+  
           container.appendChild(card);
         });
+  
+        
+        const formWrapper = document.createElement('div');
+        formWrapper.className = 'event-card add-event-wrapper';
+        
+        
+        const toggleFormBtn = document.createElement('button');
+        toggleFormBtn.textContent = '+ Add New Event';
+        toggleFormBtn.className = 'toggle-form-btn';
+        toggleFormBtn.onclick = () => {
+          form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        };
+        
+        
+        const form = document.createElement('section');
+        form.id = 'add-event-form';
+        form.style.display = 'none';
+        form.innerHTML = `
+          <h3>Add a New Event</h3>
+          <input type="text" id="event-title" placeholder="Event Title" required>
+          <input type="text" id="event-description" placeholder="Description" required>
+          <input type="text" id="event-time" placeholder="Event Date and Time" required>
+          <input type="text" id="event-image" placeholder="Image URL" required>
+          <button onclick="addNewEvent()">Add Event</button>
+        `;
+        
+       
+        formWrapper.appendChild(toggleFormBtn);
+        formWrapper.appendChild(form);
+        container.appendChild(formWrapper);
+
       })
       .catch(err => console.error('Failed to load events:', err));
   }
@@ -287,11 +405,59 @@ function isUserSignedIn() {
   }
   
   function toggleEventForm() {
-    const form = document.getElementById("add-event-form");
+   
     const user = localStorage.getItem("user");
-    form.style.display = user ? "block" : "none";
+   
+
+    const form = document.getElementById("add-event-form");
+    if (!form) return; 
+
+    form.style.display = (form.style.display === "block") ? "none" : "block";
+  }
+
+  function loadSimpleEvents(limit = 3) {
+    fetch('/api/events')
+    .then(res => res.json())
+    .then(events => {
+      const list = document.querySelector('.simple-event-list');
+      if (!list) return;
+
+      list.innerHTML = ''; 
+
+      events.forEach(event => {
+        const li = document.createElement('li');
+        li.classList.add('simple-event-item');
+        let html = "<strong>" + event.title + "</strong>";
+
+        if (event.time) {
+            html += '<span class="simple-event-time"> – ' + event.time + '</span>';
+        }
+
+        if (event.description) {
+            html += '<p class="simple-event-desc">' + event.description + '</p>';
+        }
+
+    li.innerHTML = html;
+        list.appendChild(li);
+      });
+    })
+    .catch(err => console.error('Failed to load events:', err));
   }
   
+  document.addEventListener('DOMContentLoaded', () => {
+    const eventList = document.querySelector('.simple-event-list');
+    if (eventList) {
+      loadSimpleEvents();
+    }
+//     const weatherEl = document.getElementById('weather-temp'); // Or the correct ID/class
+//   if (weatherEl) {
+//     updateWeatherInfo();
+//   }
+  });
+
+  
+
+
   window.onload = function () {
     const user = localStorage.getItem('user');
     const loginBtn = document.getElementById("loginToggleBtn");
@@ -306,6 +472,15 @@ function isUserSignedIn() {
     }
   
     updateWeatherInfo("Pretoria");
-    loadEvents();
-    toggleEventForm(); 
+  
+    if (document.querySelector(".events-container")) {
+      loadEvents();
+    }
+  
+    if (document.getElementById("add-event-form")) {
+      toggleEventForm();
+    }
+  
+    
+    
   };
